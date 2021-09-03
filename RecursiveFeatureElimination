@@ -1,0 +1,11 @@
+#RECURSIVE FEATURE ELIMINATION IN LOGISTIC REGRESSION
+data_final_vars=data_final.columns.values.tolist()
+y=['y']
+X=[i for i in data_final_vars if i not in y]
+from sklearn.feature_selection import RFE
+from sklearn.linear_model import LogisticRegression
+logreg = LogisticRegression()
+rfe = RFE(logreg, 20)
+rfe = rfe.fit(os_data_X, os_data_y.values.ravel())
+print(rfe.support_)
+print(rfe.ranking_)
